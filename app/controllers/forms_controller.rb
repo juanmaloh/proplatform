@@ -1,7 +1,7 @@
-class FormsController < ApplicationController
+#class FormsController < ApplicationController
 
-  def index
+#  def index
   
-  end
+#  end
 
-end
+#end

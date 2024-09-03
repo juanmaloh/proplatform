@@ -1,0 +1,23 @@
+.dashboards-body {
+  background-color: #f8f9fa; /* Light grey background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  padding-top: 60px; /* Space for the navbar if needed */
+}
+
+.dashboards-title {
+  color: #343a40; /* Dark grey text */
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(135deg, #6f42c1, #d63384);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
