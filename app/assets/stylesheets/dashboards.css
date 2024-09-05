@@ -15,7 +15,13 @@
   font-weight: bold;
   text-align: center;
   background: linear-gradient(135deg, #6f42c1, #d63384);
+  
+  /* Prefijo para WebKit */
   -webkit-background-clip: text;
+  
+  /* Propiedad estándar */
+  background-clip: text;
+  
   -webkit-text-fill-color: transparent;
   padding: 20px;
   border-radius: 10px;
