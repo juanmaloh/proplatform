@@ -13,3 +13,64 @@
  *= require_tree .
  *= require_self
  */
+
+/* Elimina márgenes y padding del body y header */
+body, header {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para la navbar */
+.navbar {
+  background-color: #343a40; /* Dark grey background */
+  margin-top: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-brand {
+  color: #ffffff !important; /* White text for brand */
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important; /* White text for links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d63384 !important; /* Pink color on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  background-color: #343a40; /* Dark grey background for dropdown */
+}
+
+.dropdown-item {
+  color: #ffffff !important; /* White text for dropdown items */
+}
+
+.dropdown-item:hover {
+  background-color: #d63384 !important; /* Pink background on hover */
+  color: #ffffff !important; /* White text on hover */
+}
+
+/* Estilos para mensajes flash */
+.alert {
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  color: #343a40; /* Dark grey text color */
+  box-shadow: none; /* Remove box shadow */
+  padding: 10px 20px; /* Add padding */
+}
+
+.alert-info {
+  color: #007bff; /* Blue color for info messages */
+}
+
+.alert-danger {
+  color: #dc3545; /* Red color for danger messages */
+}
