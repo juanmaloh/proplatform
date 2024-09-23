@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   get 'dashboards/index'
   
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
-  root "dashboards#index"
+  authenticated :user do
+    root 'forms#index', as: :authenticated_root # Ruta cuando el usuario está autenticado
+  end
 
-  # Ruta para la vista forms
-  resources :forms, only: [:index] 
+  unauthenticated do
+    root 'dashboards#index', as: :unauthenticated_root # Ruta cuando el usuario no está autenticado
+  end
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  
-  #get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :forms, only: [:index, :new, :create, :show] # Agregar la acción show
 end
+
+
+

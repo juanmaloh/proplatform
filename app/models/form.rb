@@ -1,5 +1,6 @@
 class Form < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
-  validates :body, presence: true, length: { minimum: 10 }
+  validates :description, presence: true
+  validates :fields, presence: true # Puedes ajustar esto según tus necesidades
 end
