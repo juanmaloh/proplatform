@@ -40,7 +40,8 @@
                 <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+                <!-- Ajuste para Turbo en el enlace de cerrar sesión -->
+                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro que deseas cerrar sesión?" }, class: "nav-link" %>
               </li>
             <% else %>
               <li class="nav-item">
@@ -56,17 +57,15 @@
     </nav>
   </header>
 
-  <!-- Flash messages -->
-  <% if notice %>
-    <div class="alert alert-info" role="alert">
-      <%= notice %>
+ <!-- Flash messages -->
+ <div id="flash-messages" class="container mt-3">
+  <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key == 'notice' ? 'info' : 'danger' %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
-  <% if alert %>
-    <div class="alert alert-danger" role="alert">
-      <%= alert %>
-    </div>
-  <% end %>
+</div>
 
   <!-- Contenido de la página específica -->
   <%= yield %> <!-- Este renderiza el contenido de la vista específica -->

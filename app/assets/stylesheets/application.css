@@ -24,7 +24,7 @@ body, header {
 .navbar {
   background-color: #343a40; /* Dark grey background */
   margin-top: 0;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -65,6 +65,7 @@ body, header {
   color: #343a40; /* Dark grey text color */
   box-shadow: none; /* Remove box shadow */
   padding: 10px 20px; /* Add padding */
+  margin: 0; /* Remove any margin */
 }
 
 .alert-info {
@@ -73,4 +74,47 @@ body, header {
 
 .alert-danger {
   color: #dc3545; /* Red color for danger messages */
+}
+
+/* Clase personalizada para que los botones parezcan enlaces */
+.btn-as-link {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  padding: 0; /* Sin padding */
+  font: inherit; /* Hereda la fuente del contexto */
+  color: inherit; /* Hereda el color del contexto */
+  cursor: pointer; /* Cursor de mano para indicar que es clickeable */
+  text-decoration: underline; /* Subrayado como un enlace */
+}
+
+.btn-outline-danger.btn-as-link {
+  color: #dc3545; /* Rojo para el botón de eliminación */
+  
+}
+
+.btn-outline-danger.btn-as-link:hover {
+  color: #d63384; /* Color rosa al pasar el mouse */
+  background-color: transparent; /* Sin fondo al pasar el mouse */
+}
+
+.btn-cancel {    background-color: #dc3545; /* Rojo */
+  color: white;
+  border: none;
+}
+ 
+.btn-cancel:hover {
+  background-color: #c82333; /* Rojo más oscuro para hover */
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+}
+
+button:hover {
+  background-color: #dc3545;
+  color: white;
 }

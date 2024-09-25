@@ -4,15 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   authenticated :user do
-    root 'forms#index', as: :authenticated_root # Ruta cuando el usuario está autenticado
+    root 'forms#index', as: :authenticated_root
   end
 
   unauthenticated do
-    root 'dashboards#index', as: :unauthenticated_root # Ruta cuando el usuario no está autenticado
+    root 'dashboards#index', as: :unauthenticated_root
   end
 
-  resources :forms, only: [:index, :new, :create, :show] # Agregar la acción show
+  resources :forms, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end
-
-
-
