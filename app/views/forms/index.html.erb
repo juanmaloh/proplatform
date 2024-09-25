@@ -27,6 +27,8 @@
               <p class="card-text"><%= truncate(form.description, length: 100) %></p>
               <div class="d-grid">
                 <%= link_to "Ver Formulario", form_path(form), class: "btn btn-outline-secondary mb-2" %>
+                <%= link_to "Editar", edit_form_path(form), class: "btn btn-outline-primary mb-2" %>
+                <%= button_to "Eliminar", form_path(form), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este formulario?" }, class: "btn btn-outline-danger mb-2 w-100" %>
               </div>
             </div>
           </div>

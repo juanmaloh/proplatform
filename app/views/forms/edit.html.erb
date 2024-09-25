@@ -3,36 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crear Nuevo Formulario</title>
+  <title>Editar Formulario</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Crear Nuevo Formulario</h1>
+    <h1 class="text-center mb-4">Editar Formulario</h1>
 
-    <!-- Formulario para crear un nuevo formulario -->
+    <!-- Formulario para editar un formulario existente -->
     <%= form_with(model: @form, local: true) do |form| %>
       <div class="mb-3">
         <%= form.label :title, "Título del Formulario" %>
-        <%= form.text_field :title, class: "form-control", required: true %>
+        <%= form.text_field :title, class: "form-control", required: true, value: @form.title %>
       </div>
 
       <div class="mb-3">
         <%= form.label :description, "Descripción" %>
-        <%= form.text_area :description, class: "form-control", required: true %>
+        <%= form.text_area :description, class: "form-control", required: true, value: @form.description %>
       </div>
 
       <div class="mb-3">
         <%= form.label :fields, "Campos (especificar en formato JSON)" %>
-        <%= form.text_area :fields, class: "form-control", placeholder: '{ "name": "string", "email": "email" }' %>
+        <%= form.text_area :fields, class: "form-control", value: @form.fields.to_json %> <!-- Renderizamos el JSON existente -->
       </div>
 
+      <!-- Botones de acción -->
       <div class="d-flex justify-content-center mb-3">
-        <%= form.submit "Crear Formulario", class: "btn btn-primary me-2" %>
-        <%= link_to "Cancelar", forms_path, class: "btn btn-outline-danger me-2" %> <!-- Botón de cancelar actualizado -->
-        <%= link_to "Crear Otro Formulario", new_form_path, class: "btn btn-secondary" %>
+        <%= form.submit "Actualizar Formulario", class: "btn btn-primary me-2" %>
+        <%= link_to "Cancelar", forms_path, class: "btn btn-outline-danger me-2" %>
+        <%= link_to "Crear Nuevo Formulario", new_form_path, class: "btn btn-secondary me-2" %>
+
+        <!-- Botón de eliminar -->
+        <%= button_to "Eliminar Formulario", form_path(@form), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este formulario?" }, class: "btn btn-outline-danger" %>
       </div>
     <% end %>
   </div>
