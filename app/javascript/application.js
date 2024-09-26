@@ -1,10 +1,6 @@
 // Turbo ya maneja las solicitudes delete con data-turbo-method="delete"
 // No es necesario crear formularios manualmente para manejar delete
 
-// Script para verificar carga de Turbo
-document.addEventListener("turbo:load", () => {
-    console.log("Turbo cargado");
-  });
   
   // Script para ocultar automáticamente los mensajes flash
   function hideFlashMessages() {
