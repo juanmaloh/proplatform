@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     root 'dashboards#index', as: :unauthenticated_root
   end
 
-  resources :forms, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :forms do
+    resources :submissions, only: [:new, :create] # Rutas anidadas para submissions
+  end
 end
