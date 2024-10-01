@@ -18,8 +18,21 @@
         <h3 class="card-title">Título: <%= @form.title %></h3>
         <p class="card-text"><strong>Descripción:</strong> <%= @form.description %></p>
 
-        <h5>Campos del Formulario:</h5>
-        <pre><%= JSON.pretty_generate(@form.fields) %></pre> <!-- Formatear el JSON para hacerlo más legible -->
+        <h5>Preguntas:</h5>
+        <% @form.questions.each do |question| %>
+          <div class="mb-3">
+            <h6><%= question.content %> (Categoría: <%= question.category.name %>)</h6>
+            <% if question.question_type == 'multiple_choice' %>
+              <ul>
+                <% question.options.each do |option| %>
+                  <li><%= option.content %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>Respuesta de texto</p>
+            <% end %>
+          </div>
+        <% end %>
 
         <!-- Botones de acción -->
         <div class="mt-4 d-flex justify-content-center">

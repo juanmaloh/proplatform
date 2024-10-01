@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_25_210858) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_01_143323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_25_210858) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_forms", id: false, force: :cascade do |t|
+    t.bigint "form_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_categories_forms_on_category_id"
+    t.index ["form_id"], name: "index_categories_forms_on_form_id"
   end
 
   create_table "forms", force: :cascade do |t|
@@ -32,6 +39,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_25_210858) do
     t.index ["user_id"], name: "index_forms_on_user_id"
   end
 
+  create_table "forms_questions", id: false, force: :cascade do |t|
+    t.bigint "form_id"
+    t.bigint "question_id"
+    t.index ["form_id", "question_id"], name: "index_forms_questions_on_form_id_and_question_id", unique: true
+  end
+
   create_table "options", force: :cascade do |t|
     t.string "content"
     t.bigint "question_id", null: false
@@ -43,12 +56,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_25_210858) do
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "question_type"
-    t.bigint "form_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.index ["category_id"], name: "index_questions_on_category_id"
-    t.index ["form_id"], name: "index_questions_on_form_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -87,9 +99,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_25_210858) do
   end
 
   add_foreign_key "forms", "users"
+  add_foreign_key "forms_questions", "forms"
+  add_foreign_key "forms_questions", "questions"
   add_foreign_key "options", "questions"
   add_foreign_key "questions", "categories"
-  add_foreign_key "questions", "forms"
   add_foreign_key "responses", "options"
   add_foreign_key "responses", "questions"
   add_foreign_key "responses", "users"

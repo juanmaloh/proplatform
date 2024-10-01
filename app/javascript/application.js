@@ -9,7 +9,7 @@
       if (flashMessages) {
         flashMessages.style.display = 'none';
       }
-    }, 3000); // Tiempo para ocultar los mensajes (3 segundos)
+    }, 4000); // Tiempo para ocultar los mensajes (3 segundos)
   }
   
   // Ejecutar la función cuando la página se carga por primera vez y después de redirecciones con Turbo
